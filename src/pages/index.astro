@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SaveTheWeekend from '../components/SaveTheWeekend.astro';
+import CocktailSection from '../components/CocktailSection.astro';
+import WeddingSection from '../components/WeddingSection.astro';
+import DressCode from '../components/DressCode.astro';
+import FlightsSection from '../components/FlightsSection.astro';
+import Accommodation from '../components/Accommodation.astro';
+import GiftRegistry from '../components/GiftRegistry.astro';
+import GiftModal from '../components/GiftModal.astro';
+import InstagramSection from '../components/InstagramSection.astro';
+import RsvpForm from '../components/RsvpForm.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="María José & José Andrés — Save the Weekend | 11-14 Nov 2026">
+  <Hero />
+  <main>
+    <SaveTheWeekend />
+    <CocktailSection />
+    <WeddingSection />
+    <DressCode />
+    <FlightsSection />
+    <Accommodation />
+    <GiftRegistry />
+    <GiftModal />
+    <InstagramSection />
+    <RsvpForm />
+  </main>
+  <Footer />
+
+  <script>
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+  </script>
+</BaseLayout>

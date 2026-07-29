@@ -1,0 +1,144 @@
+<section class="fade-in max-w-4xl mx-auto px-6 py-16" id="rsvp">
+  <div class="bg-wedding-sand/50 p-8 md:p-12 rounded-2xl border border-wedding-bronze/10 shadow-sm relative overflow-hidden max-w-2xl mx-auto text-center">
+    <div class="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-wedding-accent/40"></div>
+    <div class="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-wedding-accent/40"></div>
+    <div class="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-wedding-accent/40"></div>
+    <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-wedding-accent/40"></div>
+
+    <h2 class="font-serif text-4xl text-wedding-bronze mb-4">Confirmaci&oacute;n de Asistencia</h2>
+    <p class="font-sans font-light mb-8">Por favor, conf&iacute;rmanos tu asistencia antes del 15 de Octubre de 2026.</p>
+
+    <form id="rsvpForm" class="max-w-md mx-auto flex flex-col gap-4 text-left" novalidate>
+      <div>
+        <label for="name" class="block font-sans text-xs uppercase tracking-wider text-wedding-bronze mb-1 ml-1">Nombre Completo</label>
+        <input type="text" id="name" required class="w-full bg-wedding-cream border border-wedding-accent/40 rounded-md px-4 py-3 focus:outline-none focus:border-wedding-bronze transition-colors font-sans text-wedding-bronze">
+        <span id="name-error" class="text-red-600 text-xs hidden mt-1 ml-1"></span>
+      </div>
+      <div>
+        <label for="attendance" class="block font-sans text-xs uppercase tracking-wider text-wedding-bronze mb-1 ml-1">¿Asistirás?</label>
+        <select id="attendance" required class="w-full bg-wedding-cream border border-wedding-accent/40 rounded-md px-4 py-3 focus:outline-none focus:border-wedding-bronze transition-colors font-sans text-wedding-bronze appearance-none">
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="yes">¡Sí, ahí estaré!</option>
+          <option value="no">Lamentablemente no podré asistir</option>
+        </select>
+        <span id="attendance-error" class="text-red-600 text-xs hidden mt-1 ml-1"></span>
+      </div>
+      <div id="guests-container" style="display: none;">
+        <label for="guests" class="block font-sans text-xs uppercase tracking-wider text-wedding-bronze mb-1 ml-1">Número de acompañantes</label>
+        <input type="number" id="guests" min="0" max="4" value="0" class="w-full bg-wedding-cream border border-wedding-accent/40 rounded-md px-4 py-3 focus:outline-none focus:border-wedding-bronze transition-colors font-sans text-wedding-bronze">
+      </div>
+      <div id="dietary-container" style="display: none;">
+        <label for="dietary" class="block font-sans text-xs uppercase tracking-wider text-wedding-bronze mb-1 ml-1">Restricciones Alimenticias</label>
+        <textarea id="dietary" rows="2" placeholder="Alergias, menú vegetariano, etc." class="w-full bg-wedding-cream border border-wedding-accent/40 rounded-md px-4 py-3 focus:outline-none focus:border-wedding-bronze transition-colors font-sans text-wedding-bronze resize-none"></textarea>
+      </div>
+      <div class="mt-2">
+        <label for="guest-message" class="block font-sans text-xs uppercase tracking-wider text-wedding-bronze mb-1 ml-1">Mensaje para los Novios</label>
+        <textarea id="guest-message" rows="3" placeholder="Escribe tus buenos deseos aquí..." class="w-full bg-wedding-cream border border-wedding-accent/40 rounded-md px-4 py-3 focus:outline-none focus:border-wedding-bronze transition-colors font-sans text-wedding-bronze resize-none"></textarea>
+      </div>
+      <button type="submit" class="mt-4 bg-wedding-bronze text-wedding-cream px-8 py-3 rounded-md font-sans uppercase tracking-widest text-sm hover:bg-wedding-accent transition-colors duration-300 shadow-md">
+        Confirmar
+      </button>
+    </form>
+    <div id="rsvpSuccess" class="hidden mt-6 text-green-700 font-sans p-4 bg-green-100 rounded-md border border-green-300">
+      ¡Gracias por confirmar! Hemos recibido tu respuesta.
+    </div>
+    <div id="rsvpError" class="hidden mt-6 text-red-700 font-sans p-4 bg-red-100 rounded-md border border-red-300">
+      Ocurrió un error al enviar tu confirmación. Por favor, intenta de nuevo.
+    </div>
+  </div>
+</section>
+
+<script>
+  const attendanceSelect = document.getElementById('attendance');
+  const guestsContainer = document.getElementById('guests-container');
+  const dietaryContainer = document.getElementById('dietary-container');
+
+  attendanceSelect.addEventListener('change', (e) => {
+    if (e.target.value === 'yes') {
+      guestsContainer.style.display = 'block';
+      dietaryContainer.style.display = 'block';
+    } else {
+      guestsContainer.style.display = 'none';
+      dietaryContainer.style.display = 'none';
+    }
+  });
+
+  function sanitize(str) {
+    const el = document.createElement('div');
+    el.textContent = str;
+    return el.textContent;
+  }
+
+  function showError(id, message) {
+    const el = document.getElementById(id);
+    el.textContent = message;
+    el.classList.remove('hidden');
+  }
+
+  function hideError(id) {
+    document.getElementById(id).classList.add('hidden');
+  }
+
+  document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    hideError('name-error');
+    hideError('attendance-error');
+
+    const rawName = document.getElementById('name').value.trim();
+    const attendance = document.getElementById('attendance').value;
+    const rawGuests = document.getElementById('guests').value || '0';
+    const rawDietary = document.getElementById('dietary').value.trim() || '';
+    const rawMessage = document.getElementById('guest-message').value.trim() || '';
+
+    if (!rawName || rawName.length < 2) {
+      showError('name-error', 'Por favor, ingresa tu nombre completo.');
+      document.getElementById('name').focus();
+      return;
+    }
+    if (rawName.length > 100) {
+      showError('name-error', 'El nombre es demasiado largo.');
+      return;
+    }
+    if (!attendance || (attendance !== 'yes' && attendance !== 'no')) {
+      showError('attendance-error', 'Selecciona si asistirás o no.');
+      return;
+    }
+
+    const guestsNum = parseInt(rawGuests, 10);
+    if (isNaN(guestsNum) || guestsNum < 0 || guestsNum > 4) {
+      showError('name-error', 'Número de acompañantes inválido.');
+      return;
+    }
+
+    const name = sanitize(rawName);
+    const dietary = sanitize(rawDietary).substring(0, 500);
+    const message = sanitize(rawMessage).substring(0, 1000);
+
+    const data = { name, attendance, guests: String(guestsNum), dietary, message, timestamp: new Date().toISOString() };
+
+    const btn = e.target.querySelector('button[type="submit"]');
+    const originalText = btn.innerText;
+    btn.innerText = 'Enviando...';
+    btn.disabled = true;
+
+    const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxI8KLLrDHqcaM7RNOVUh-j6sr9w1D4ZhncrnkqdtwxkqYx45IUJ7XDd1OMdHv3iZDynw/exec';
+
+    try {
+      await fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      document.getElementById('rsvpForm').style.display = 'none';
+      document.getElementById('rsvpSuccess').classList.remove('hidden');
+    } catch (err) {
+      console.error('Error sending to Google Sheets:', err);
+      document.getElementById('rsvpError').classList.remove('hidden');
+    }
+
+    btn.innerText = originalText;
+    btn.disabled = false;
+  });
+</script>

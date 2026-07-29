@@ -1,0 +1,55 @@
+<div id="giftModal" class="modal">
+  <div class="modal-content text-center">
+    <span class="close-btn" onclick="closeGiftModal()">&times;</span>
+    <h2 class="font-serif text-3xl text-wedding-bronze mb-4 mt-2">Datos Bancarios</h2>
+    <p class="font-sans text-sm mb-6">Para nosotros, su compañía es lo más importante. Si desean darnos un obsequio, pueden hacerlo a la siguiente cuenta:</p>
+    <div class="bg-wedding-sand/50 p-4 rounded-md text-left font-sans text-sm border border-wedding-accent/30">
+      <p><strong>Banco:</strong> Banesco Panamá</p>
+      <p><strong>Titular:</strong> José Andrés Del Orbe</p>
+      <p><strong>Cuenta:</strong> 0000 0000 0000 0000</p>
+      <p><strong>Zelle:</strong> bodamjyja@email.com</p>
+    </div>
+    <button onclick="copyAccountInfo()" id="copyBtn" class="mt-6 border border-wedding-bronze text-wedding-bronze px-4 py-2 rounded-md font-sans text-xs uppercase tracking-wider hover:bg-wedding-bronze hover:text-wedding-cream transition-colors">
+      Copiar Datos
+    </button>
+  </div>
+</div>
+
+<script>
+  window.closeGiftModal = function () {
+    document.getElementById('giftModal').style.display = 'none';
+  };
+
+  window.copyAccountInfo = function () {
+    const textToCopy = 'Banco: Banesco Panamá\nTitular: José Andrés Del Orbe\nCuenta: 0000 0000 0000 0000\nZelle: bodamjyja@email.com';
+    const textArea = document.createElement('textarea');
+    textArea.value = textToCopy;
+    textArea.style.top = '0';
+    textArea.style.left = '0';
+    textArea.style.position = 'fixed';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      const successful = document.execCommand('copy');
+      const btn = document.getElementById('copyBtn');
+      if (successful) {
+        btn.innerText = '¡Copiado!';
+        btn.classList.add('bg-wedding-bronze', 'text-wedding-cream');
+        setTimeout(() => {
+          btn.innerText = 'Copiar Datos';
+          btn.classList.remove('bg-wedding-bronze', 'text-wedding-cream');
+        }, 2000);
+      }
+    } catch (err) {
+      console.error('Error copying:', err);
+    }
+    document.body.removeChild(textArea);
+  };
+
+  window.onclick = function (event) {
+    if (event.target.classList.contains('modal')) {
+      event.target.style.display = 'none';
+    }
+  };
+</script>

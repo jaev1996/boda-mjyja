@@ -1,0 +1,26 @@
+<section class="fade-in max-w-4xl mx-auto px-6 py-16 text-center" id="accommodation">
+  <div class="decor-line"></div>
+  <h2 class="font-serif text-4xl md:text-5xl text-wedding-bronze mb-4">Hospedaje</h2>
+  <p class="font-sans font-light mb-8 text-wedding-bronze/70 max-w-xl mx-auto">
+    En vista de que la boda se realizará en este hotel, podrás reservar directamente aquí.
+  </p>
+  <div class="max-w-lg mx-auto bg-wedding-sand/30 p-8 rounded-xl border border-wedding-accent/20">
+    <div class="w-full h-48 bg-wedding-sand/50 rounded-lg mb-4 flex items-center justify-center">
+      <div class="text-center">
+        <svg class="w-12 h-12 mx-auto text-wedding-accent/50 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <p class="font-sans text-xs text-wedding-accent/50">Fotos del hotel próximamente</p>
+      </div>
+    </div>
+    <h3 class="font-serif text-2xl text-wedding-bronze mb-1">Hotel Lidotel Margarita</h3>
+    <p class="font-sans text-sm font-light mb-4">Pampatar, Isla de Margarita</p>
+    <p class="font-sans text-xs text-wedding-bronze/60 mb-6 italic">*Puedes reservar habitación en este hotel mencionando el código de la boda.</p>
+    <a href="#" target="_blank" rel="noopener noreferrer" class="inline-block bg-wedding-bronze text-wedding-cream px-6 py-2.5 rounded-full font-sans uppercase tracking-widest text-xs hover:bg-wedding-accent transition-colors duration-300 shadow-md" id="hotel-reserve-link">Reservar Ahora</a>
+  </div>
+</section>
+
+<script>
+  document.getElementById('hotel-reserve-link')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('El enlace de reserva estará disponible próximamente.');
+  });
+</script>

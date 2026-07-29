@@ -1,0 +1,33 @@
+<section class="fade-in max-w-4xl mx-auto px-6 py-16 text-center" id="wedding">
+  <h2 class="font-serif text-4xl md:text-5xl text-wedding-bronze mb-10">La Boda</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+    <div class="bg-wedding-sand/30 p-8 rounded-xl border border-wedding-accent/20">
+      <svg class="w-12 h-12 mx-auto text-wedding-accent mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+      <h3 class="font-serif text-3xl text-wedding-bronze mb-2">Ceremonia</h3>
+      <p class="font-sans font-medium mb-1">Jueves, 12 de Noviembre de 2026</p>
+      <p class="font-sans font-light text-lg mb-4">Por definir</p>
+      <p class="font-sans font-medium">Basílica de la Virgen del Valle</p>
+      <p class="font-sans font-light text-sm mb-4">Isla de Margarita</p>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-xs uppercase tracking-widest text-wedding-accent border-b border-wedding-accent hover:text-wedding-bronze transition-colors" id="church-map-link">Ver Ubicación</a>
+    </div>
+    <div class="bg-wedding-sand/30 p-8 rounded-xl border border-wedding-accent/20">
+      <svg class="w-12 h-12 mx-auto text-wedding-accent mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg>
+      <h3 class="font-serif text-3xl text-wedding-bronze mb-2">Recepción</h3>
+      <p class="font-sans font-medium mb-1">A continuación de la ceremonia</p>
+      <p class="font-sans font-light text-lg mb-4">Hasta el amanecer</p>
+      <p class="font-sans font-medium">Hotel — Por definir</p>
+      <p class="font-sans font-light text-sm mb-4">Isla de Margarita</p>
+      <span class="mt-2 inline-block text-xs uppercase tracking-widest text-wedding-accent/50 border-b border-wedding-accent/30">Ubicación próximamente</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const weddingLink = document.getElementById('church-map-link');
+  if (weddingLink && weddingLink.getAttribute('href') === '#') {
+    weddingLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('El enlace de ubicación de la Basílica de la Virgen del Valle estará disponible próximamente.');
+    });
+  }
+</script>
