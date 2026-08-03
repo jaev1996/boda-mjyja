@@ -3,15 +3,42 @@
     <span class="close-btn" onclick="closeGiftModal()">&times;</span>
     <h2 class="font-serif text-3xl text-wedding-bronze mb-4 mt-2">Datos Bancarios</h2>
     <p class="font-sans text-sm mb-6">Para nosotros, su compañía es lo más importante. Si desean darnos un obsequio, pueden hacerlo a la siguiente cuenta:</p>
-    <div class="bg-wedding-sand/50 p-4 rounded-md text-left font-sans text-sm border border-wedding-accent/30">
-      <p><strong>Banco:</strong> Banesco Panamá</p>
-      <p><strong>Titular:</strong> José Andrés Del Orbe</p>
-      <p><strong>Cuenta:</strong> 0000 0000 0000 0000</p>
-      <p><strong>Zelle:</strong> bodamjyja@email.com</p>
+
+    <div class="space-y-3 text-left">
+      <div class="flex items-center justify-between gap-3 bg-wedding-sand/50 p-3 rounded-lg border border-wedding-accent/30">
+        <div class="min-w-0">
+          <p class="font-sans text-xs uppercase tracking-wider text-wedding-accent mb-0.5">Banco</p>
+          <p class="font-sans text-sm text-wedding-bronze truncate">Banesco Panamá</p>
+        </div>
+        <button type="button" data-copy="Banesco Panamá" data-original="Copiar" class="copy-btn shrink-0 border border-wedding-bronze text-wedding-bronze px-4 py-2 rounded-md font-sans text-xs uppercase tracking-wider hover:bg-wedding-bronze hover:text-wedding-cream transition-colors">Copiar</button>
+      </div>
+
+      <div class="flex items-center justify-between gap-3 bg-wedding-sand/50 p-3 rounded-lg border border-wedding-accent/30">
+        <div class="min-w-0">
+          <p class="font-sans text-xs uppercase tracking-wider text-wedding-accent mb-0.5">Titular</p>
+          <p class="font-sans text-sm text-wedding-bronze truncate">José Andrés Del Orbe</p>
+        </div>
+        <button type="button" data-copy="José Andrés Del Orbe" data-original="Copiar" class="copy-btn shrink-0 border border-wedding-bronze text-wedding-bronze px-4 py-2 rounded-md font-sans text-xs uppercase tracking-wider hover:bg-wedding-bronze hover:text-wedding-cream transition-colors">Copiar</button>
+      </div>
+
+      <div class="flex items-center justify-between gap-3 bg-wedding-sand/50 p-3 rounded-lg border border-wedding-accent/30">
+        <div class="min-w-0">
+          <p class="font-sans text-xs uppercase tracking-wider text-wedding-accent mb-0.5">Cuenta</p>
+          <p class="font-sans text-sm text-wedding-bronze truncate">0000 0000 0000 0000</p>
+        </div>
+        <button type="button" data-copy="0000 0000 0000 0000" data-original="Copiar" class="copy-btn shrink-0 border border-wedding-bronze text-wedding-bronze px-4 py-2 rounded-md font-sans text-xs uppercase tracking-wider hover:bg-wedding-bronze hover:text-wedding-cream transition-colors">Copiar</button>
+      </div>
+
+      <div class="flex items-center justify-between gap-3 bg-wedding-sand/50 p-3 rounded-lg border border-wedding-accent/30">
+        <div class="min-w-0">
+          <p class="font-sans text-xs uppercase tracking-wider text-wedding-accent mb-0.5">Zelle</p>
+          <p class="font-sans text-sm text-wedding-bronze truncate">bodamjyja@email.com</p>
+        </div>
+        <button type="button" data-copy="bodamjyja@email.com" data-original="Copiar" class="copy-btn shrink-0 border border-wedding-bronze text-wedding-bronze px-4 py-2 rounded-md font-sans text-xs uppercase tracking-wider hover:bg-wedding-bronze hover:text-wedding-cream transition-colors">Copiar</button>
+      </div>
     </div>
-    <button onclick="copyAccountInfo()" id="copyBtn" class="mt-6 border border-wedding-bronze text-wedding-bronze px-4 py-2 rounded-md font-sans text-xs uppercase tracking-wider hover:bg-wedding-bronze hover:text-wedding-cream transition-colors">
-      Copiar Datos
-    </button>
+
+    <button type="button" onclick="copyAllAccountInfo()" id="copyAllBtn" data-original="Copiar Todo" class="mt-6 border border-wedding-bronze text-wedding-bronze px-5 py-2.5 rounded-md font-sans text-xs uppercase tracking-wider hover:bg-wedding-bronze hover:text-wedding-cream transition-colors">Copiar Todo</button>
   </div>
 </div>
 
@@ -20,31 +47,49 @@
     document.getElementById('giftModal').style.display = 'none';
   };
 
-  window.copyAccountInfo = function () {
-    const textToCopy = 'Banco: Banesco Panamá\nTitular: José Andrés Del Orbe\nCuenta: 0000 0000 0000 0000\nZelle: bodamjyja@email.com';
-    const textArea = document.createElement('textarea');
-    textArea.value = textToCopy;
-    textArea.style.top = '0';
-    textArea.style.left = '0';
-    textArea.style.position = 'fixed';
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    try {
-      const successful = document.execCommand('copy');
-      const btn = document.getElementById('copyBtn');
-      if (successful) {
-        btn.innerText = '¡Copiado!';
-        btn.classList.add('bg-wedding-bronze', 'text-wedding-cream');
-        setTimeout(() => {
-          btn.innerText = 'Copiar Datos';
-          btn.classList.remove('bg-wedding-bronze', 'text-wedding-cream');
-        }, 2000);
-      }
-    } catch (err) {
-      console.error('Error copying:', err);
+  function copyTextToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
     }
-    document.body.removeChild(textArea);
+    return new Promise((resolve, reject) => {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.top = '0';
+      textArea.style.left = '0';
+      textArea.style.position = 'fixed';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        const ok = document.execCommand('copy');
+        ok ? resolve() : reject(new Error('copy failed'));
+      } catch (err) {
+        reject(err);
+      }
+      document.body.removeChild(textArea);
+    });
+  }
+
+  function showCopied(btn) {
+    const original = btn.dataset.original || 'Copiar';
+    btn.innerText = '✓ ¡Copiado!';
+    btn.classList.add('bg-wedding-bronze', 'text-wedding-cream');
+    setTimeout(() => {
+      btn.innerText = original;
+      btn.classList.remove('bg-wedding-bronze', 'text-wedding-cream');
+    }, 2000);
+  }
+
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      copyTextToClipboard(btn.dataset.copy).then(() => showCopied(btn)).catch(() => {});
+    });
+  });
+
+  window.copyAllAccountInfo = function () {
+    const all = 'Banco: Banesco Panamá\nTitular: José Andrés Del Orbe\nCuenta: 0000 0000 0000 0000\nZelle: bodamjyja@email.com';
+    const btn = document.getElementById('copyAllBtn');
+    copyTextToClipboard(all).then(() => showCopied(btn)).catch(() => {});
   };
 
   window.onclick = function (event) {

@@ -16,17 +16,19 @@ No hay lint, typecheck ni tests.
 
 - Rama `main` → GitHub Actions → build + deploy a GitHub Pages
 - Node 22, pnpm 11
-- URL del sitio: `https://jaev.github.io/boda-mjyja`
-- Build config en `astro.config.mjs`: `site` apunta a GitHub Pages, carpeta `assets`
+- URL del sitio: `https://jaev1996.github.io/boda-mjyja`
+- Build config en `astro.config.mjs`: `site` apunta a GitHub Pages, `base: '/boda-mjyja'`, carpeta `assets`
+- `astro.config.mjs` define `base: '/boda-mjyja'`; el build emite URLs con prefijo (`/boda-mjyja/assets/...`). El dev server corre en `/boda-mjyja/`
 
 ## Estructura
 
 - Página única: `src/pages/index.astro` — importa ~12 componentes
 - Componentes en `src/components/`
-- Layout base en `src/layouts/BaseLayout.astro`
-- Estilos globales en `src/styles/globals.css`
+- Layout base en `src/layouts/BaseLayout.astro` — importa `src/styles/globals.css` (obligatorio, si no, el CSS manual no entra al bundle)
+- `astro.config.mjs` usa `tailwind({ applyBaseStyles: false })` porque `globals.css` ya incluye las directivas `@tailwind`; el CSS propio va como reglas planas (fuera de `@layer`)
 - Path alias `@/*` → `src/*` (definido en `tsconfig.json`)
 - Google Fonts importadas en `globals.css`: Cormorant Garamond, Montserrat, Great Vibes
+- Clases `.decor-line`, `.modal`, `.modal-content`, `.close-btn` y `.scrollbar-hide` son CSS manual en `globals.css`, no utilidades de Tailwind
 
 ## Tema Tailwind
 
@@ -39,5 +41,5 @@ Fuentes: `font-serif` (Cormorant Garamond), `font-sans` (Montserrat), `font-scri
 
 ## Notas
 
-- Las imágenes de assets van en `public/images/` (referenciadas como `/images/...`)
-- Scroll animations con clase `fade-in` + IntersectionObserver (en `index.astro`)
+- Las imágenes van en `public/images/` y se referencian con `${import.meta.env.BASE_URL}/images/...` (obligatorio por el `base` de GitHub Pages). Actualmente: `pareja-boda.jpeg` (foto principal de la pareja, enmarcada en el Hero), `playa-atardecer.jpg` (imagen stock de Pexels descargada para el banner horizontal de SaveTheWeekend) y `lidotel.jpg` (foto del hotel en la sección Hospedaje)
+- Scroll animations con clase `reveal` (elementos individuales) y `reveal-group` (revelado escalonado de tarjetas) + IntersectionObserver (en `index.astro`)

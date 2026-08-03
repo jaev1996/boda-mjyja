@@ -31,15 +31,15 @@ import Footer from '../components/Footer.astro';
   <Footer />
 
   <script>
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+    const observerOptions = { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('in-view');
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
   </script>
 </BaseLayout>

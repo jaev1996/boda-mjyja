@@ -1,32 +1,31 @@
-<section class="fade-in max-w-4xl mx-auto px-6 py-20 text-center" id="save-weekend">
+<section class="max-w-4xl mx-auto px-6 py-20 text-center" id="save-weekend">
   <div class="mb-6">
-    <div class="w-full max-h-64 rounded-xl overflow-hidden mx-auto bg-gradient-to-b from-wedding-accent/30 to-wedding-sand flex items-center justify-center">
-      <img src="/images/palmeras-placeholder.jpg" alt="Palmeras" class="w-full h-full object-cover opacity-80" onerror="this.style.display='none';this.parentElement.classList.add('h-48')">
-      <svg class="absolute w-16 h-16 text-wedding-accent/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8"></path><path d="M12 8c-1.5 0-3-.5-4.5-1.5S5.5 3.5 5 2c1.5.5 3 1.5 4.5 3S11 7 12 8z"></path><path d="M12 8c1.5 0 3-.5 4.5-1.5S18.5 3.5 19 2c-1.5.5-3 1.5-4.5 3S13 7 12 8z"></path><path d="M12 12c-1.5 0-3-.5-4-1.5s-2-2.5-2-4c1.5.5 3 1.5 4 3s2 2.5 2 2.5z"></path><path d="M12 12c1.5 0 3-.5 4-1.5s2-2.5 2-4c-1.5.5-3 1.5-4 3s-2 2.5-2 2.5z"></path></svg>
+    <div class="w-full h-56 md:h-64 rounded-xl overflow-hidden mx-auto relative reveal">
+      <img src={`${import.meta.env.BASE_URL}/images/playa-atardecer.jpg`} alt="Atardecer tropical en la Isla de Margarita" class="w-full h-full object-cover object-[50%_30%]"><div class="absolute inset-0 bg-gradient-to-t from-wedding-cream/40 via-transparent to-transparent"></div>
     </div>
   </div>
-  <div class="decor-line"></div>
-  <h2 class="font-serif text-4xl md:text-5xl text-wedding-bronze mb-4">Save the Weekend</h2>
-  <p class="font-sans text-lg font-light leading-relaxed text-wedding-bronze/80 max-w-2xl mx-auto mb-12">
+  <div class="decor-line reveal"></div>
+  <h2 class="font-serif text-4xl md:text-5xl text-wedding-bronze mb-4 reveal">Save the Weekend</h2>
+  <p class="font-sans text-lg font-light leading-relaxed text-wedding-bronze/80 max-w-2xl mx-auto mb-12 reveal">
     Del 11 al 14 de Noviembre de 2026, los esperamos en la Isla de Margarita para celebrar juntos el amor.
   </p>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-    <div class="bg-wedding-sand/40 p-6 rounded-xl border border-wedding-accent/20">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 reveal-group">
+    <div class="bg-wedding-sand/40 p-6 rounded-xl border border-wedding-accent/20 reveal">
       <span class="font-sans text-xs uppercase tracking-wider text-wedding-accent">Miércoles</span>
       <p class="font-serif text-3xl text-wedding-bronze my-1">11</p>
       <p class="font-sans text-sm font-light">Cóctel de Bienvenida</p>
     </div>
-    <div class="bg-wedding-bronze text-wedding-cream p-6 rounded-xl border border-wedding-accent/30 shadow-lg">
+    <div class="bg-wedding-bronze text-wedding-cream p-6 rounded-xl border border-wedding-accent/30 shadow-lg reveal">
       <span class="font-sans text-xs uppercase tracking-wider text-wedding-accent">Jueves</span>
       <p class="font-serif text-3xl my-1">12</p>
       <p class="font-sans text-sm font-light">Ceremonia & Fiesta</p>
     </div>
-    <div class="bg-wedding-sand/40 p-6 rounded-xl border border-wedding-accent/20">
+    <div class="bg-wedding-sand/40 p-6 rounded-xl border border-wedding-accent/20 reveal">
       <span class="font-sans text-xs uppercase tracking-wider text-wedding-accent">Viernes</span>
       <p class="font-serif text-3xl text-wedding-bronze my-1">13</p>
       <p class="font-sans text-sm font-light">Día de Playita</p>
     </div>
-    <div class="bg-wedding-sand/40 p-6 rounded-xl border border-wedding-accent/20">
+    <div class="bg-wedding-sand/40 p-6 rounded-xl border border-wedding-accent/20 reveal">
       <span class="font-sans text-xs uppercase tracking-wider text-wedding-accent">Sábado</span>
       <p class="font-serif text-3xl text-wedding-bronze my-1">14</p>
       <p class="font-sans text-sm font-light">Despedida</p>
