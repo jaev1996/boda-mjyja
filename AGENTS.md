@@ -22,7 +22,7 @@ No hay lint, typecheck ni tests.
 
 ## Estructura
 
-- Página única: `src/pages/index.astro` — importa ~12 componentes
+- Página única: `src/pages/index.astro` — importa ~11 componentes
 - Componentes en `src/components/`
 - Layout base en `src/layouts/BaseLayout.astro` — importa `src/styles/globals.css` (obligatorio, si no, el CSS manual no entra al bundle)
 - `astro.config.mjs` usa `tailwind({ applyBaseStyles: false })` porque `globals.css` ya incluye las directivas `@tailwind`; el CSS propio va como reglas planas (fuera de `@layer`)
@@ -32,7 +32,7 @@ No hay lint, typecheck ni tests.
 
 ## Tema Tailwind
 
-Colores personalizados: `wedding-cream`, `wedding-sand`, `wedding-bronze`, `wedding-accent`
+Colores personalizados: `wedding-cream`, `wedding-sand`, `wedding-bronze`, `wedding-accent`, `wedding-gray` (#cbb6c0)
 Fuentes: `font-serif` (Cormorant Garamond), `font-sans` (Montserrat), `font-script` (Great Vibes)
 
 ## Configuración externa
@@ -41,5 +41,5 @@ Fuentes: `font-serif` (Cormorant Garamond), `font-sans` (Montserrat), `font-scri
 
 ## Notas
 
-- Las imágenes van en `public/images/` y se referencian con `${import.meta.env.BASE_URL}/images/...` (obligatorio por el `base` de GitHub Pages). Actualmente: `pareja-boda.jpeg` (foto principal de la pareja, enmarcada en el Hero), `playa-atardecer.jpg` (imagen stock de Pexels descargada para el banner horizontal de SaveTheWeekend) y `lidotel.jpg` (foto del hotel en la sección Hospedaje)
+- Las imágenes van en `public/images/` y se referencian con `${import.meta.env.BASE_URL}/images/...` (obligatorio por el `base` de GitHub Pages). Actualmente: `pareja-boda.jpeg` (foto principal de la pareja, enmarcada en el Hero), `playa-atardecer.jpg` (imagen stock de Pexels descargada para el banner horizontal de SaveTheWeekend), `lidotel.jpg` (foto del hotel en la sección Hospedaje), `Fondo de agua.jpg` (fondo transparente del Hero), `palmera-jm.jpg` (monograma de palmera con iniciales en el Hero), `Palmeras.jpg` (foto de palmeras en SaveTheWeekend), `Cocteles.jpg` (foto de cocteles en CocktailSection), `ceremonia.jpg` (foto de ceremonia en WeddingSection), `Hotel de dia.png` / `Hotel de Noche.png` (fotos del hotel en Accommodation), `Dress Code 1.jpg` / `Dress Code 2.jpg` (imágenes de referencia de vestimenta, enlazadas desde Cocktail y Wedding)
 - Scroll animations con clase `reveal` (elementos individuales) y `reveal-group` (revelado escalonado de tarjetas) + IntersectionObserver (en `index.astro`)

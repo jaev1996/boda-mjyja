@@ -8,6 +8,7 @@ export default {
         'wedding-sand': '#E5D9C5',
         'wedding-bronze': '#5C3A21',
         'wedding-accent': '#B38A65',
+        'wedding-gray': '#cbb6c0',
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'serif'],

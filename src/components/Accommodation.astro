@@ -1,24 +1,29 @@
 <section class="max-w-4xl mx-auto px-6 py-16 text-center" id="accommodation">
+  <h2 class="font-script text-4xl md:text-5xl text-wedding-bronze mb-2 reveal">Hospedaje</h2>
   <div class="decor-line reveal"></div>
-  <h2 class="font-serif text-4xl md:text-5xl text-wedding-bronze mb-4 reveal">Hospedaje</h2>
-  <p class="font-sans font-light mb-8 text-wedding-bronze/70 max-w-xl mx-auto reveal">
-    En vista de que la boda se realizará en este hotel, podrás reservar directamente aquí.
-  </p>
-  <div class="max-w-lg mx-auto bg-wedding-sand/30 p-8 rounded-xl border border-wedding-accent/20 reveal">
-    <div class="w-full h-48 rounded-lg overflow-hidden mb-4">
-      <img src={`${import.meta.env.BASE_URL}/images/lidotel.jpg`} alt="Hotel Lidotel Margarita" class="w-full h-full object-cover">
+
+  <div class="max-w-lg mx-auto mt-8 reveal">
+    <div class="w-full h-64 rounded-lg overflow-hidden mb-6 mx-auto">
+      <img src={`${import.meta.env.BASE_URL}/images/Hotel de dia.png`} alt="Hotel LD Plus Palm Beach" class="w-full h-full object-cover">
     </div>
-    <h3 class="font-serif text-2xl text-wedding-bronze mb-1">Hotel Lidotel Margarita</h3>
-    <p class="font-sans text-sm font-light mb-4">Pampatar, Isla de Margarita</p>
-    <p class="font-sans text-xs text-wedding-bronze/60 mb-6 italic">*Puedes reservar habitación en este hotel mencionando el código de la boda.</p>
-    <a href="https://maps.app.goo.gl/SGa944Zok9uFJyJa9" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-xs uppercase tracking-widest text-wedding-accent border-b border-wedding-accent hover:text-wedding-bronze transition-colors mb-3">Ver Ubicación</a>
-    <a href="#" target="_blank" rel="noopener noreferrer" class="block bg-wedding-bronze text-wedding-cream px-6 py-2.5 rounded-full font-sans uppercase tracking-widest text-xs hover:bg-wedding-accent transition-colors duration-300 shadow-md" id="hotel-reserve-link">Reservar Ahora</a>
+
+    <h3 class="font-serif text-2xl text-wedding-bronze mb-1">Hotel LD Plus Palm Beach</h3>
+    <p class="font-sans text-sm font-light mb-3">Playa El Agua, Isla de Margarita</p>
+    <span class="inline-block text-xs uppercase tracking-widest text-wedding-cream bg-wedding-bronze px-3 py-1 rounded mb-4">Ubicación</span>
+    <p class="mt-2 mb-4"><a href="https://maps.app.goo.gl/SGa944Zok9uFJyJa9" target="_blank" rel="noopener noreferrer" class="text-sm text-wedding-accent underline hover:text-wedding-bronze transition-colors">Ver Ubicación</a></p>
+
+    <div class="bg-wedding-gray/50 p-6 rounded-xl text-left mt-6">
+      <h4 class="font-sans text-sm uppercase tracking-wider text-wedding-bronze font-medium mb-3">Contacto de Reserva</h4>
+      <p class="font-sans text-sm mb-1"><span class="font-medium">Email:</span> <a href="mailto:FRANMARY.RODRIGUEZ@LDHOTELES.COM" class="text-wedding-accent underline">FRANMARY.RODRIGUEZ@LDHOTELES.COM</a></p>
+      <p class="font-sans text-sm mb-3"><span class="font-medium">Código de boda:</span> MARIA JOSE Y JOSE ANDRES 12.11.2026</p>
+      <p class="font-sans text-xs text-wedding-bronze/60 italic">Menciona el código al reservar para obtener tarifas especiales.</p>
+    </div>
+
+    <div class="mt-4">
+      <a href="https://www.instagram.com/ldhoteles" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-wedding-accent hover:text-wedding-bronze transition-colors font-sans text-sm">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></span>
+        @ldhoteles
+      </a>
+    </div>
   </div>
 </section>
-
-<script>
-  document.getElementById('hotel-reserve-link')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    alert('El enlace de reserva estará disponible próximamente.');
-  });
-</script>
