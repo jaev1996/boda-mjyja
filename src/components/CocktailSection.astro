@@ -1,3 +1,7 @@
+---
+import PhotoFrame from './PhotoFrame.astro';
+---
+
 <section class="max-w-4xl mx-auto px-6 py-16 text-center" id="cocktail">
   <h2 class="font-script text-4xl md:text-5xl text-wedding-bronze mb-10 reveal">Cóctel de Bienvenida</h2>
   <div class="max-w-lg mx-auto reveal">
@@ -13,6 +17,6 @@
     <p class="mt-4"><a href={`${import.meta.env.BASE_URL}/images/Dress Code 1.jpg`} target="_blank" rel="noopener noreferrer" class="text-sm text-wedding-accent underline hover:text-wedding-bronze transition-colors">Dress Code</a></p>
   </div>
   <div class="mt-8 w-full reveal">
-    <img src={`${import.meta.env.BASE_URL}/images/Cocteles.jpg`} alt="Cóctel de Bienvenida" class="w-full h-64 md:h-80 object-cover" />
+    <PhotoFrame src={`${import.meta.env.BASE_URL}/images/Cocteles.jpg`} alt="Cóctel de Bienvenida" />
   </div>
 </section>

@@ -1,0 +1,13 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  className?: string;
+  imgClass?: string;
+}
+const { src, alt, className = 'w-full h-64 md:h-80', imgClass = 'w-full h-full object-cover' } = Astro.props;
+---
+
+<div class={`photo-frame ${className}`}>
+  <img src={src} alt={alt} class={imgClass} />
+</div>
