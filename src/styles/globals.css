@@ -81,10 +81,16 @@ body {
 
 .photo-frame {
   position: relative;
+  width: 100%;
   border-radius: 1rem;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.photo-frame img {
+  opacity: 0.8;
+  filter: saturate(0.9) contrast(1.05);
 }
 
 .scrollbar-hide {
