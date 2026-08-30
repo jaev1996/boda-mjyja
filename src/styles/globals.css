@@ -6,6 +6,15 @@
 
 body {
   @apply bg-wedding-cream text-wedding-bronze font-sans antialiased overflow-x-hidden;
+  text-align: center;
+}
+
+main, section, div, p, h1, h2, h3, h4, span, a, label, input, textarea, select, button {
+  text-align: center;
+}
+
+input, textarea, select {
+  text-align: center;
 }
 
 .reveal {
@@ -85,13 +94,34 @@ body {
   margin-left: calc(50% - 50vw);
   border-radius: 0;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
 }
 
 .photo-frame img {
   opacity: 0.72;
   filter: saturate(0.85) contrast(1.08) brightness(0.93);
+}
+
+.location-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid rgba(92, 58, 33, 0.8);
+  border-radius: 9999px;
+  background: transparent;
+  color: #5C3A21;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.location-link:hover {
+  background: rgba(203, 182, 192, 0.15);
+  border-color: rgba(92, 58, 33, 1);
 }
 
 .scrollbar-hide {
